@@ -2,7 +2,7 @@
  * Created by lantu on 2017/11/2.
  */
 
-export default todos = (state = [],action) => {
+export const todos = (state = [],action) => {
     switch (action.type){
         case 'ADD_TODO':
             return [
@@ -21,3 +21,5 @@ export default todos = (state = [],action) => {
             return state
     }
 }
+
+// export default todos

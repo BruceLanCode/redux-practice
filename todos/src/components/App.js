@@ -3,11 +3,16 @@
  */
 
 import React,{ Component } from 'react'
+import AddTodo from '../containers/AddTodo'
+import VisibleTodoList from '../containers/VisibleTodoList'
 
 export default class extends Component {
     render(){
         return (
-            <div>huangqian</div>
+            <div>
+                <AddTodo />
+                <VisibleTodoList />
+            </div>
         )
     }
 }

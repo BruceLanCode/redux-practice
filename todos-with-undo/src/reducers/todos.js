@@ -2,7 +2,9 @@
  * Created by lantu on 2017/11/2.
  */
 
-export const todos = (state = [],action) => {
+import undoable from 'redux-undo'
+
+const todos = (state = [],action) => {
     switch (action.type){
         case 'ADD_TODO':
             return [
@@ -22,4 +24,6 @@ export const todos = (state = [],action) => {
     }
 }
 
-// export default todos
+const undoableTodos = undoable(todos)
+
+export default undoableTodos;

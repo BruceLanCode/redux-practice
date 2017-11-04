@@ -6,6 +6,7 @@ import React,{ Component } from 'react'
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import Footer from './Footer'
+import UndoRedo from '../containers/UndoRedo'
 
 export default class extends Component {
     render(){
@@ -14,6 +15,7 @@ export default class extends Component {
                 <AddTodo />
                 <VisibleTodoList />
                 <Footer></Footer>
+                <UndoRedo></UndoRedo>
             </div>
         )
     }

@@ -8,7 +8,7 @@ const initialState = [
     }
 ]
 
-const todo = (state = initialState,action) => {
+const todos = (state = initialState,action) => {
     switch (action.type) {
         case ADD_TODO:
             return [
@@ -28,6 +28,11 @@ const todo = (state = initialState,action) => {
                 todo.id === action.id ? { ...todo,text: action.text } : todo
             )
 
+        case COMPLETE_TODO:
+            return state.map(todo =>
+                todo.id === action.id ? { ...todo,completed: todo.completed } : todo
+            )
+
         case COMPLETE_ALL:
             const areAllMarked = state.every(todo => todo.completed)
             return state.map(todo => ({
@@ -43,3 +48,5 @@ const todo = (state = initialState,action) => {
 
     }
 }
+
+export default todos

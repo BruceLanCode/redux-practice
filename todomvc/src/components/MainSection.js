@@ -2,6 +2,7 @@ import React ,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilter'
 import TodoItem from './TodoItem'
+import Footer from './Footer'
 
 const TODO_FILTERS = {
     [SHOW_ALL]: () => true,
@@ -32,9 +33,32 @@ export default class MainSection extends Component {
         }
     }
 
+    handleClearCompleted = () => {
+        this.props.actions.clearCompleted()
+    }
+
+    handleShow = filter => {
+        this.setState({filter})
+    }
+
+    renderFooter(completedCount){
+        const { todos } = this.props;
+        const { filter } = this.state;
+        const activeCount = todos.length - completedCount;
+
+        if(todos.length){
+            return (
+                <Footer completedCount={completedCount}
+                    activeCount={activeCount}
+                    filter={filter}
+                    onClearCompleted={this.handleClearCompleted} onShow={this.handleShow}/>
+            )
+        }
+    }
+
     render(){
         const { todos,actions } = this.props;
-        const { filter } = this.state
+        const { filter } = this.state;
 
         const filteredTodos = todos.filter(TODO_FILTERS[filter])
         const completedCount = todos.reduce((count,todo) =>
@@ -50,6 +74,7 @@ export default class MainSection extends Component {
                         <TodoItem key={todo.id} todo={todo} {...actions} />
                     )}
                 </ul>
+                { this.renderFooter(completedCount) }
             </section>
         )
     }

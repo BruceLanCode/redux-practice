@@ -1,6 +1,7 @@
 import React ,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilter'
+import TodoItem from './TodoItem'
 
 const TODO_FILTERS = {
     [SHOW_ALL]: () => true,
@@ -17,7 +18,8 @@ export default class MainSection extends Component {
     state = { filter: SHOW_ALL }
 
     renderToggleAll(completedCount){
-        const { todos,actions } = this.props
+        const { todos,actions } = this.props;
+        console.log(todos);
         if(todos.length > 0){
             return (
                 <span>
@@ -44,9 +46,10 @@ export default class MainSection extends Component {
             <section className="main">
                 { this.renderToggleAll(completedCount) }
                 <ul className="todo-list">
-
+                    { filteredTodos.map(todo =>
+                        <TodoItem key={todo.id} todo={todo} {...actions} />
+                    )}
                 </ul>
-                huangqian
             </section>
         )
     }

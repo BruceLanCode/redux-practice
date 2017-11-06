@@ -30,7 +30,7 @@ const todos = (state = initialState,action) => {
 
         case COMPLETE_TODO:
             return state.map(todo =>
-                todo.id === action.id ? { ...todo,completed: todo.completed } : todo
+                todo.id === action.id ? { ...todo,completed: !todo.completed } : todo
             )
 
         case COMPLETE_ALL:

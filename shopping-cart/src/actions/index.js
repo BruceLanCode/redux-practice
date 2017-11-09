@@ -5,14 +5,14 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
-const receiveProducets = products => ({
+const receiveProducts = products => ({
     type: types.RECEIVE_PRODUCTS,
     products
 })
 
 export const getAllProducts = () => dispatch => {
     shop.getProducts(products => {
-        dispatch(receiveProducets(products))
+        dispatch(receiveProducts(products))
     })
 }
 

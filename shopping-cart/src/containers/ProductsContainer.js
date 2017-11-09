@@ -7,6 +7,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addToCart } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
+import ProductsList from '../components/ProductsList'
+import ProductItem from '../components/ProductItem'
 
 class ProductsContainer extends Component {
     static propTypes = {
@@ -20,8 +22,16 @@ class ProductsContainer extends Component {
     }
 
     render(){
+        const { products,addToCart } = this.props;
         return (
-            <div>huangxi</div>
+            <ProductsList title="Products">
+                {products.map(product =>
+                    <ProductItem key={product.id}
+                    product={product}
+                    onAddToCartClicked={() => addToCart(product.id)}
+                    ></ProductItem>
+                )}
+            </ProductsList>
         )
     }
 }

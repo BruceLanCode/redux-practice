@@ -6,10 +6,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './product'
 
-const ProductItem = ({ product,onAddToClicked }) => (
+const ProductItem = ({ product,onAddToCartClicked }) => (
     <div style={{ marginBottom: 20 }}>
         <Product title={product.title} price={product.price} inventory={product.inventory}></Product>
-        <button onClick={onAddToClicked} disabled={product.inventory > 0 ? '':'disabled'}>
+        <button onClick={onAddToCartClicked} disabled={product.inventory > 0 ? '':'disabled'}>
             {product.inventory > 0 ? 'Add to cart' : 'Sold out'}
         </button>
     </div>

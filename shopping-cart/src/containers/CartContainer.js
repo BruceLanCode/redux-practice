@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { checkout } from '../actions'
 import { getTotal,getCartProducts } from '../reducers'
+import Cart from '../components/Cart'
 
 class CartContainer extends React.Component {
     static propTypes = {
@@ -21,8 +22,9 @@ class CartContainer extends React.Component {
     }
 
     render(){
+        const { products,total,checkout } = this.props
         return (
-            <div>huangqian</div>
+            <Cart products={products} total={total} onCheckoutClicked={checkout}></Cart>
         )
     }
 }
